@@ -1,22 +1,31 @@
 body {
+    width: 98vw;
+    min-height: 920px;
+    display: grid;
+    grid-template-rows: 43px 670px 107px 100px;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
     background: #fff;
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 }
 
-form{
+form {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.input-text-search{
+.input-text-search {
     font-size: 2em;
     border: 2px solid #FF2B2B;
     font-style: oblique;
+    border-radius: 20px;
+    padding-left: 20px;
 }
 
-.input-btn-search{ 
+.input-btn-search {
     font-size: 1.5em;
     border: none;
     margin: 0;
@@ -26,15 +35,18 @@ form{
     background: #FF2B2B;
     color: #fff;
     font-weight: bold;
+    border-radius: 20px;
 }
 
-div.video-container{
-    display:flex;
-    justify-content:center;
-    margin-top: 10vh;
+div.video-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    transition: all 0.25s linear;
+    position: relative;
 }
 
-div.video-card{
+div.video-card {
     width: 320px;
     min-height: 600px;
     margin: 20px;
@@ -42,39 +54,41 @@ div.video-card{
     grid-template-rows: 180px 100px 30px 30px 30px 230px;
     align-items: center;
     text-align: center;
-    color:#fff;    
+    text-overflow: ellipsis;
+    color: #fff;
     background: #FF2B2B
 }
 
-div.video-card h1{
+div.video-card h1 {
     font-size: 1em;
 }
 
-div.video-card,.dot-elem{
+div.video-card,
+.dot-elem {
     user-select: none;
     -moz-user-select: none;
 }
 
-div.video-card h1 a{
+div.video-card h1 a {
     margin: 0;
-    color:#fff;
+    color: #fff;
     text-decoration: none;
 }
 
-.video-descr{
+.video-descr {
     width: 90%;
     font-size: 0.8em;
     margin: auto;
     text-align: left;
 }
 
-.dots-block{
+.dots-block {
     display: flex;
     justify-content: center;
-    margin: 50px 0;
+    margin: 50px 0 20px;
 }
 
-.dot-elem{
+.dot-elem {
     width: 35px;
     height: 35px;
     display: flex;
@@ -82,8 +96,159 @@ div.video-card h1 a{
     align-items: center;
     margin: 0 10px;
     border-radius: 50%;
-    background:#FF2B2B;
-    border: 1px solid #FF2B2B;   
+    background: #FF2B2B;
+    border: 1px solid #FF2B2B;
     cursor: pointer;
-    color: #FF2B2B;  
+    color: #FF2B2B;
+}
+
+.block-button {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 450px;
+    margin: auto;
+}
+
+.button-prev {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.block-button span {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    font-weight: bold;
+    padding: 5px;
+    color: #FF2B2B;
+    text-align: center;
+}
+
+.button-next {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.block-button button {
+    width: 135px;
+    height: 35px;
+    margin: 10px;
+    background: rgb(255, 43, 43);
+    color: #fff;
+    border: 1px solid #FF2B2B;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.block-button button:active,
+.block-button button:focus,
+button:disabled {
+    box-shadow: 0px 0px 25px #000 inset;
+    border: none;
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        display: block;
+    }
+
+    form {
+        font-size: 1.5em;
+    }
+
+    .input-btn-search {
+        padding: 0 5vw;
+    }
+
+    div.video-container {
+        margin-top: none;
+        height: 100%;
+    }
+
+    div.video-card {
+        width: auto;
+        height: 100%;
+        grid-template-rows: none;
+        font-size: 2.3rem;
+    }
+
+    div.video-card img {
+        width: 100%;
+        object-fit: cover;
+        height: 30vh;
+    }
+
+    .block-button {
+        font-size: 2.3em;
+        width: 90vw;
+    }
+
+    .block-button button {
+        width: 23vw;
+        height: 10vw;
+        font-size: 1.4em;
+    }
+}
+.load {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+}
+
+.load hr {
+    border: 0;
+    margin: 0;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    border-radius: 50%;
+    animation: spin 2s ease infinite
+}
+
+.load :first-child {
+    background: #ffffff;
+    border: 1px solid #F63D3A;
+    animation-delay: -1.5s
+}
+
+.load :nth-child(2) {
+    background: #F63D3A;
+    border: 1px solid #F63D3A;
+    animation-delay: -1s
+}
+
+.load :nth-child(3) {
+    background: #ffffff;
+    border: 1px solid #F63D3A;
+    animation-delay: -0.5s
+}
+
+.load :last-child {
+    background: #F63D3A;
+    border: 1px solid #F63D3A;
+}
+
+@keyframes spin {
+
+    0%,
+    100% {
+        transform: translate(0)
+    }
+
+    25% {
+        transform: translate(160%)
+    }
+
+    50% {
+        transform: translate(160%, 160%)
+    }
+
+    75% {
+        transform: translate(0, 160%)
+    }
 }
